@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth.models import User
 from .models import CarMake, CarModel
 from .restapis import get_request, analyze_review_sentiments, post_review
@@ -33,15 +32,14 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
-# Create a logout_request view to handle sign out request
+
 def logout_user(request):
-    data = {"userName":request.user.username}
+    data = {"userName": request.user.username}
     return JsonResponse(data)
 
-# Create a registration view to handle sign up request
+
 @csrf_exempt
 def registration(request):
-    context = {}
 
     data = json.loads(request.body)
     username = data['userName']
@@ -50,7 +48,6 @@ def registration(request):
     last_name = data['lastName']
     email = data['email']
     username_exist = False
-    email_exist = False
     try:
         # Check if user already exists
         User.objects.get(username=username)
