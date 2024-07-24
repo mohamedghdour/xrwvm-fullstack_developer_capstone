@@ -9,10 +9,9 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from .populate import initiate
 
-# Get an instance of a logger
+
 logger = logging.getLogger(__name__)
 
-# Create your views here.
 
 @csrf_exempt
 def login_user(request):
@@ -29,6 +28,7 @@ def login_user(request):
 def logout_user(request):
     data = {"userName": request.user.username}
     return JsonResponse(data)
+
 
 @csrf_exempt
 def registration(request):
@@ -60,6 +60,7 @@ def registration(request):
         response_data = {"userName": username, "error": "Already Registered"}
         return JsonResponse(response_data)
 
+
 def get_cars(request):
     count = CarMake.objects.count()
     if count == 0:
@@ -71,11 +72,13 @@ def get_cars(request):
     ]
     return JsonResponse({"CarModels": cars})
 
+
 def get_dealerships(request, state="All"):
     endpoint = "/fetchDealers/" if state != "All" else "/fetchDealers"
     endpoint += state
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
+
 
 def get_dealer_reviews(request, dealer_id):
     if dealer_id:
@@ -88,6 +91,7 @@ def get_dealer_reviews(request, dealer_id):
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
+
 def get_dealer_details(request, dealer_id):
     if dealer_id:
         endpoint = "/fetchDealer/{}".format(dealer_id)
@@ -95,6 +99,7 @@ def get_dealer_details(request, dealer_id):
         return JsonResponse({"status": 200, "dealer": dealership})
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
+
 
 def add_review(request):
     if not request.user.is_anonymous:
