@@ -25,6 +25,7 @@ def login_user(request):
         response_data["status"] = "Authenticated"
     return JsonResponse(response_data)
 
+
 def logout_user(request):
     data = {"userName": request.user.username}
     return JsonResponse(data)
@@ -107,7 +108,7 @@ def add_review(request):
         try:
             post_review(data)
             return JsonResponse({"status": 200})
-        except SomeSpecificException as e:
+        except SomeSpecificException:
             return JsonResponse({"status": 401, "message": "Error in posting review"})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
