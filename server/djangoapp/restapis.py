@@ -23,7 +23,7 @@ def get_request(endpoint, **kwargs):
     print(f"GET from {request_url}")
     try:
         response = requests.get(request_url)
-        response.raise_for_status() 
+        response.raise_for_status()
         return response.json()
     except requests.RequestException as e:
         print(f"Network exception occurred: {e}")
