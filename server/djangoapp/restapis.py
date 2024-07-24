@@ -23,10 +23,11 @@ def get_request(endpoint, **kwargs):
     print(f"GET from {request_url}")
     try:
         response = requests.get(request_url)
-        response.raise_for_status()  # Raises HTTPError for bad responses (4xx and 5xx)
+        response.raise_for_status() 
         return response.json()
     except requests.RequestException as e:
         print(f"Network exception occurred: {e}")
+
 
 def analyze_review_sentiments(text):
     request_url = f"{sentiment_analyzer_url}/analyze/{text}"
@@ -36,6 +37,7 @@ def analyze_review_sentiments(text):
         return response.json()
     except requests.RequestException as e:
         print(f"Unexpected exception: {e}")
+
 
 def post_review(data_dict):
     request_url = f"{backend_url}/insert_review"
