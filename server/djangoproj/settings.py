@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [
     a+b+c
 ]
 
-d = 'https://ghdourmohame-8000'   
+d = 'https://ghdourmohame-8000'
 e = '.theiadockernext-0-labs-prod-theiak8s-4'
 f = '-tor01.proxy.cognitiveclass.ai'
 
@@ -104,13 +104,12 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-l = 'UserAttributeSimilarityValidator'
+x = 'UserAttributeSimilarityValidator'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
-        'django.contrib.auth.password_validation.'+l,
+        'django.contrib.auth.password_validation.'+x,
     },
     {
         'NAME':
