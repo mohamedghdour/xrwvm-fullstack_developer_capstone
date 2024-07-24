@@ -14,6 +14,8 @@ logger = logging.getLogger(__name__)
 
 
 @csrf_exempt
+
+
 def login_user(request):
     data = json.loads(request.body)
     username = data['userName']
@@ -31,6 +33,8 @@ def logout_user(request):
 
 
 @csrf_exempt
+
+
 def registration(request):
     data = json.loads(request.body)
     username = data['userName']
